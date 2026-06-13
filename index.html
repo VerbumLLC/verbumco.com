@@ -28,7 +28,7 @@
       overflow-x: hidden;
     }
 
-    /* ─── NAV ─────────────────────────────────────── */
+    /* NAV */
     nav {
       position: fixed;
       inset: 0 0 auto;
@@ -67,7 +67,7 @@
     .nav-links a:hover,
     .nav-links a.active { color: var(--gold); }
 
-    /* ─── HERO ────────────────────────────────────── */
+    /* HERO */
     .hero {
       min-height: 100vh;
       background-image: url('https://i.ibb.co/nq6scFYx/background.png');
@@ -113,20 +113,18 @@
       color: var(--gold);
       letter-spacing: 4px;
       line-height: 1.1;
-      margin-bottom: 0;
     }
 
     .divider {
       display: flex;
       align-items: center;
       gap: 8px;
-      margin: 18px 0 18px;
+      margin: 18px 0;
     }
     .divider .line { flex: 0 0 80px; height: 1px; background: var(--gold); opacity: .6; }
     .divider .dia  { width: 7px; height: 7px; background: var(--gold); transform: rotate(45deg); flex-shrink: 0; }
 
     .hero-tagline {
-      font-family: 'Lato', sans-serif;
       font-size: 13px;
       font-weight: 700;
       letter-spacing: 4px;
@@ -150,10 +148,7 @@
       margin-bottom: 48px;
     }
 
-    .hero-icons {
-      display: flex;
-      align-items: center;
-    }
+    .hero-icons { display: flex; align-items: center; }
     .hero-icon-item {
       display: flex;
       flex-direction: column;
@@ -208,7 +203,7 @@
       .hero-v img { width: clamp(200px, 60vw, 340px); }
     }
 
-    /* ─── BUTTONS ─────────────────────────────────── */
+    /* BUTTONS */
     .btn {
       display: inline-block;
       font-family: 'Lato', sans-serif;
@@ -238,7 +233,7 @@
     .btn-outline-dark       { background: transparent; color: var(--white); border: 1.5px solid rgba(255,255,255,.5); }
     .btn-outline-dark:hover { border-color: var(--gold); color: var(--gold); }
 
-    /* ─── CARDS SECTION ───────────────────────────── */
+    /* CARDS */
     .cards-section {
       background: var(--navy-mid);
       padding: 80px 48px;
@@ -279,7 +274,7 @@
 
     .card-btns { width: 100%; display: flex; flex-direction: column; gap: 8px; }
 
-    /* ─── CTA SECTION ─────────────────────────────── */
+    /* CTA */
     .cta-section {
       background: var(--navy-mid);
       padding: 80px 48px;
@@ -337,7 +332,7 @@
       margin-bottom: 22px;
     }
 
-    /* ─── FOOTER ──────────────────────────────────── */
+    /* FOOTER */
     footer {
       background: #050b15;
       padding: 64px 52px 32px;
@@ -454,7 +449,7 @@
     }
     .footer-bottom-links a:hover { color: var(--gold); }
 
-    /* ─── RESPONSIVE ──────────────────────────────── */
+    /* RESPONSIVE */
     @media (max-width: 960px) {
       nav { padding: 0 24px; }
       .nav-links { gap: 18px; }
@@ -496,7 +491,6 @@
 <!-- HERO -->
 <section class="hero" id="home">
   <div class="hero-inner">
-
     <div class="hero-content">
       <h1 class="hero-title">VERBUM LLC</h1>
       <div class="divider">
@@ -526,7 +520,6 @@
     <div class="hero-v">
       <img src="https://i.ibb.co/DDh2GcLc/V.png" alt="Verbum LLC">
     </div>
-
   </div>
 </section>
 
@@ -536,7 +529,7 @@
 
     <div class="card">
       <img src="https://i.ibb.co/nq84WBg6/apps-blue-and-gold.png" alt="Verbum Apps" class="card-logo">
-      <p>Powerful tools to study Scripture, grow in knowledge, and deepen your walk with God.</p>
+      <p>Digital tools and resources built to inform, equip, and inspire — across work, life, and faith.</p>
       <div class="card-btns">
         <a href="https://verbumapps.carrd.co/" target="_blank" class="btn btn-navy">EXPLORE APPS</a>
       </div>
@@ -568,7 +561,7 @@
 
     <div class="cta-item">
       <div class="cta-icon">
-        <svg viewBox="0 0 52 52" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <svg viewBox="0 0 52 52" fill="none">
           <path d="M10 32c0 0 5-6 16-6s16 6 16 6" stroke="#C9A84C" stroke-width="1.8" stroke-linecap="round"/>
           <path d="M6 38c4 4 10 8 20 8s16-4 20-8" stroke="#C9A84C" stroke-width="1.8" stroke-linecap="round"/>
           <path d="M26 24c0 0-7-5-7-11a7 7 0 0 1 14 0c0 6-7 11-7 11z" stroke="#C9A84C" stroke-width="1.8" stroke-linejoin="round"/>
@@ -585,7 +578,7 @@
 
     <div class="cta-item">
       <div class="cta-icon">
-        <svg viewBox="0 0 52 52" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <svg viewBox="0 0 52 52" fill="none">
           <rect x="6" y="13" width="40" height="28" rx="3" stroke="#C9A84C" stroke-width="1.8"/>
           <polyline points="6,13 26,30 46,13" stroke="#C9A84C" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
         </svg>
