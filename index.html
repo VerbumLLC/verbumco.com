@@ -190,29 +190,13 @@
       justify-content: center;
       position: relative;
     }
-    .hero-v::before,
-    .hero-v::after {
-      content: '';
-      position: absolute;
-      border-radius: 50%;
-      border: 1px solid rgba(201,168,76,.18);
-      pointer-events: none;
-    }
-    .hero-v::before {
-      width: clamp(300px, 40vw, 520px);
-      height: clamp(300px, 40vw, 520px);
-    }
-    .hero-v::after {
-      width: clamp(360px, 48vw, 620px);
-      height: clamp(360px, 48vw, 620px);
-      border-color: rgba(201,168,76,.09);
-    }
     .hero-v img {
       width: clamp(280px, 36vw, 500px);
-      mix-blend-mode: screen;
-      filter: drop-shadow(0 0 60px rgba(201,168,76,.4));
       position: relative;
       z-index: 1;
+      mix-blend-mode: screen;
+      -webkit-mask-image: radial-gradient(ellipse 70% 70% at 50% 50%, black 20%, transparent 65%);
+      mask-image: radial-gradient(ellipse 70% 70% at 50% 50%, black 20%, transparent 65%);
     }
 
     @media (max-width: 900px) {
@@ -283,15 +267,6 @@
       height: 100px;
       object-fit: contain;
       margin-bottom: 12px;
-    }
-
-    .card h2 {
-      font-family: 'Cinzel', serif;
-      font-size: 21px;
-      font-weight: 600;
-      color: var(--white);
-      letter-spacing: 1px;
-      margin-bottom: 6px;
     }
 
     .card p {
@@ -549,7 +524,7 @@
     </div>
 
     <div class="hero-v">
-      <img src="https://i.ibb.co/PR3XR5s/verbum.png" alt="Verbum LLC">
+      <img src="https://i.ibb.co/DDh2GcLc/V.png" alt="Verbum LLC">
     </div>
 
   </div>
