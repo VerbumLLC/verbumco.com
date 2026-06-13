@@ -1,0 +1,712 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Verbum LLC</title>
+  <meta name="description" content="Books, apps, music, and resources for formation, reflection, and everyday faithfulness.">
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Lato:ital,wght@0,300;0,400;0,700;1,400&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --navy:      #080f1e;
+      --navy-mid:  #0c1729;
+      --navy-card: #0e1d35;
+      --gold:      #c9a84c;
+      --gold-lt:   #d9bc72;
+      --cream:     #f4efe6;
+      --white:     #ffffff;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Lato', sans-serif;
+      background: var(--navy);
+      color: var(--white);
+      overflow-x: hidden;
+    }
+
+    /* ─── NAV ─────────────────────────────────────── */
+    nav {
+      position: fixed;
+      inset: 0 0 auto;
+      z-index: 200;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 52px;
+      height: 72px;
+      background: rgba(8, 15, 30, 0.96);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid rgba(201,168,76,.18);
+    }
+
+    .nav-logo img {
+      height: 48px;
+      width: auto;
+      display: block;
+      mix-blend-mode: screen;
+    }
+
+    .nav-links {
+      display: flex;
+      list-style: none;
+      gap: 34px;
+    }
+    .nav-links a {
+      font-size: 11.5px;
+      font-weight: 700;
+      letter-spacing: 2.2px;
+      text-transform: uppercase;
+      text-decoration: none;
+      color: rgba(255,255,255,.82);
+      transition: color .2s;
+    }
+    .nav-links a:hover,
+    .nav-links a.active { color: var(--gold); }
+
+    /* ─── HERO ────────────────────────────────────── */
+    .hero {
+      min-height: 100vh;
+      /* ↓ Replace HERO_BG_URL once you upload the navy/gold-curves background to imgbb */
+      background-image: url('https://i.ibb.co/nq6scFYx/background.png');
+      background-color: var(--navy);
+      background-size: cover;
+      background-position: center center;
+      display: flex;
+      align-items: center;
+      padding: 100px 72px 80px;
+      position: relative;
+    }
+    .hero::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: rgba(8,15,30,.3);
+      pointer-events: none;
+    }
+
+    .hero-inner {
+      position: relative;
+      z-index: 2;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 40px;
+      width: 100%;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .hero-content {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      flex: 0 0 50%;
+    }
+
+    .hero-title {
+      font-family: 'Cinzel', serif;
+      font-size: clamp(38px, 5vw, 68px);
+      font-weight: 700;
+      color: var(--gold);
+      letter-spacing: 4px;
+      line-height: 1.1;
+      margin-bottom: 0;
+    }
+
+    .divider {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin: 18px 0 18px;
+    }
+    .divider .line { flex: 0 0 80px; height: 1px; background: var(--gold); opacity: .6; }
+    .divider .dia  { width: 7px; height: 7px; background: var(--gold); transform: rotate(45deg); flex-shrink: 0; }
+
+    .hero-tagline {
+      font-family: 'Lato', sans-serif;
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 4px;
+      color: var(--gold-lt);
+      margin-bottom: 22px;
+    }
+
+    .hero-desc {
+      font-size: 17px;
+      font-weight: 300;
+      line-height: 1.7;
+      color: rgba(255,255,255,.82);
+      margin-bottom: 32px;
+      max-width: 420px;
+    }
+
+    .hero-cta {
+      padding: 17px 60px;
+      font-size: 13px;
+      letter-spacing: 3px;
+      margin-bottom: 48px;
+    }
+
+    .hero-icons {
+      display: flex;
+      align-items: center;
+    }
+    .hero-icon-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+      padding: 0 28px;
+    }
+    .hero-icon-item:first-child { padding-left: 0; }
+    .hero-icon-item svg {
+      width: 30px; height: 30px;
+      stroke: var(--gold);
+      fill: none;
+      stroke-width: 1.5;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+    .hero-icon-item span {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 2.5px;
+      color: rgba(255,255,255,.65);
+    }
+    .hero-icon-sep {
+      width: 1px;
+      height: 44px;
+      background: rgba(201,168,76,.35);
+      flex-shrink: 0;
+    }
+
+    .hero-v {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+    }
+    /* geometric glow ring behind the V */
+    .hero-v::before,
+    .hero-v::after {
+      content: '';
+      position: absolute;
+      border-radius: 50%;
+      border: 1px solid rgba(201,168,76,.18);
+      pointer-events: none;
+    }
+    .hero-v::before {
+      width: clamp(300px, 40vw, 520px);
+      height: clamp(300px, 40vw, 520px);
+    }
+    .hero-v::after {
+      width: clamp(360px, 48vw, 620px);
+      height: clamp(360px, 48vw, 620px);
+      border-color: rgba(201,168,76,.09);
+    }
+    .hero-v img {
+      width: clamp(280px, 36vw, 500px);
+      mix-blend-mode: screen;
+      filter: drop-shadow(0 0 60px rgba(201,168,76,.4));
+      position: relative;
+      z-index: 1;
+    }
+
+    @media (max-width: 900px) {
+      .hero { padding: 100px 32px 60px; }
+      .hero-inner { flex-direction: column; align-items: center; }
+      .hero-content { align-items: center; flex: unset; }
+      .hero-title { text-align: center; }
+      .hero-desc { text-align: center; }
+      .hero-v img { width: clamp(200px, 60vw, 340px); }
+    }
+
+    /* ─── BUTTONS ─────────────────────────────────── */
+    .btn {
+      display: inline-block;
+      font-family: 'Lato', sans-serif;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 2.4px;
+      text-transform: uppercase;
+      text-decoration: none;
+      padding: 14px 34px;
+      transition: background .2s, color .2s, border-color .2s, transform .15s;
+      cursor: pointer;
+    }
+    .btn:hover { transform: translateY(-1px); }
+
+    .btn-gold         { background: var(--gold); color: var(--navy); border: 1.5px solid var(--gold); }
+    .btn-gold:hover   { background: var(--gold-lt); border-color: var(--gold-lt); }
+
+    .btn-outline       { background: transparent; color: var(--white); border: 1.5px solid var(--white); }
+    .btn-outline:hover { border-color: var(--gold); color: var(--gold); }
+
+    .btn-navy         { background: var(--gold); color: var(--navy); border: 1.5px solid var(--gold); width: 100%; text-align: center; }
+    .btn-navy:hover   { background: var(--gold-lt); border-color: var(--gold-lt); }
+
+    .btn-navy-outline       { background: transparent; color: var(--gold); border: 1.5px solid var(--gold); width: 100%; text-align: center; }
+    .btn-navy-outline:hover { background: var(--gold); color: var(--navy); }
+
+    .btn-outline-dark       { background: transparent; color: var(--white); border: 1.5px solid rgba(255,255,255,.5); }
+    .btn-outline-dark:hover { border-color: var(--gold); color: var(--gold); }
+
+    /* ─── CARDS SECTION ───────────────────────────── */
+    .cards-section {
+      background: var(--navy-mid);
+      padding: 80px 48px;
+    }
+    .cards-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+      max-width: 1080px;
+      margin: 0 auto;
+    }
+
+    .card {
+      background: #1c2f4a;
+      border: 1px solid rgba(201,168,76,.3);
+      padding: 44px 32px 36px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+    }
+
+    /* icon box — used only for Apps card */
+    .card-icon {
+      width: 72px; height: 72px;
+      background: var(--navy-card);
+      border-radius: 14px;
+      display: flex; align-items: center; justify-content: center;
+      margin-bottom: 20px;
+      flex-shrink: 0;
+    }
+    .card-icon svg { width: 34px; height: 34px; }
+
+    /* logo image — used for Press and Studios cards */
+    .card-logo {
+      width: 100%;
+      max-width: 220px;
+      height: 100px;
+      object-fit: contain;
+      margin-bottom: 12px;
+    }
+
+    .card h2 {
+      font-family: 'Cinzel', serif;
+      font-size: 21px;
+      font-weight: 600;
+      color: var(--white);
+      letter-spacing: 1px;
+      margin-bottom: 6px;
+    }
+
+    .card-divider {
+      display: flex; align-items: center; gap: 6px;
+      margin: 10px 0 18px;
+    }
+    .card-divider .line { flex: 0 0 28px; height: 1px; background: var(--gold); }
+    .card-divider .dia  { width: 6px; height: 6px; background: var(--gold); transform: rotate(45deg); }
+
+    .card p {
+      font-size: 14.5px;
+      line-height: 1.68;
+      color: rgba(255,255,255,.65);
+      margin-bottom: 28px;
+      flex: 1;
+    }
+
+    .card-btns { width: 100%; display: flex; flex-direction: column; gap: 8px; }
+
+    /* ─── CTA SECTION ─────────────────────────────── */
+    .cta-section {
+      background: var(--navy-mid);
+      padding: 80px 48px;
+      position: relative;
+      overflow: hidden;
+    }
+    .cta-section::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse at 50% 50%, rgba(201,168,76,.06) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .cta-grid {
+      display: grid;
+      grid-template-columns: 1fr auto 1fr;
+      gap: 60px;
+      align-items: center;
+      max-width: 880px;
+      margin: 0 auto;
+      position: relative;
+      z-index: 1;
+    }
+
+    .cta-sep {
+      width: 1px; height: 130px;
+      background: rgba(201,168,76,.25);
+      position: relative;
+    }
+    .cta-sep::after {
+      content: '';
+      position: absolute;
+      top: 50%; left: 50%;
+      transform: translate(-50%,-50%) rotate(45deg);
+      width: 8px; height: 8px;
+      background: var(--gold);
+    }
+
+    .cta-item { display: flex; align-items: flex-start; gap: 22px; }
+    .cta-icon svg { width: 52px; height: 52px; }
+
+    .cta-text h3 {
+      font-family: 'Cinzel', serif;
+      font-size: 19px;
+      font-weight: 600;
+      color: var(--white);
+      margin-bottom: 10px;
+      letter-spacing: .4px;
+    }
+    .cta-text p {
+      font-size: 14px;
+      line-height: 1.65;
+      color: rgba(255,255,255,.65);
+      margin-bottom: 22px;
+    }
+
+    /* ─── FOOTER ──────────────────────────────────── */
+    footer {
+      background: #050b15;
+      padding: 64px 52px 32px;
+      border-top: 1px solid rgba(201,168,76,.12);
+    }
+
+    .footer-top {
+      display: grid;
+      grid-template-columns: 1.4fr 1fr 1.6fr;
+      gap: 40px;
+      max-width: 1100px;
+      margin: 0 auto 52px;
+    }
+
+    .footer-brand img {
+      height: 56px;
+      width: auto;
+      display: block;
+      margin-bottom: 14px;
+      mix-blend-mode: screen;
+    }
+    .footer-tagline {
+      font-family: 'Cinzel', serif;
+      font-style: italic;
+      font-size: 13px;
+      color: var(--gold);
+      letter-spacing: .4px;
+    }
+
+    .footer-col h4 {
+      font-size: 10.5px;
+      font-weight: 700;
+      letter-spacing: 2.6px;
+      text-transform: uppercase;
+      color: var(--white);
+      margin-bottom: 18px;
+    }
+    .footer-col ul { list-style: none; }
+    .footer-col ul li { margin-bottom: 10px; }
+    .footer-col ul li a {
+      font-size: 13px;
+      color: rgba(255,255,255,.55);
+      text-decoration: none;
+      transition: color .2s;
+    }
+    .footer-col ul li a:hover { color: var(--gold); }
+
+    .footer-connect h4 {
+      font-size: 10.5px;
+      font-weight: 700;
+      letter-spacing: 2.6px;
+      text-transform: uppercase;
+      color: var(--white);
+      margin-bottom: 8px;
+    }
+    .footer-connect > p {
+      font-size: 12.5px;
+      color: rgba(255,255,255,.5);
+      line-height: 1.55;
+      margin-bottom: 16px;
+    }
+
+    .email-row { display: flex; margin-bottom: 20px; }
+    .email-row input {
+      flex: 1;
+      padding: 10px 14px;
+      background: rgba(255,255,255,.06);
+      border: 1px solid rgba(201,168,76,.28);
+      color: var(--white);
+      font-family: 'Lato', sans-serif;
+      font-size: 13px;
+      outline: none;
+    }
+    .email-row input::placeholder { color: rgba(255,255,255,.28); }
+    .email-row button {
+      padding: 0 14px;
+      background: var(--gold);
+      border: none;
+      cursor: pointer;
+      display: flex; align-items: center; justify-content: center;
+      transition: background .2s;
+    }
+    .email-row button:hover { background: var(--gold-lt); }
+    .email-row button svg { width: 16px; height: 16px; stroke: var(--navy); fill: none; stroke-width: 2.2; stroke-linecap: round; stroke-linejoin: round; }
+
+    .socials { display: flex; gap: 10px; }
+    .socials a {
+      width: 36px; height: 36px;
+      border: 1px solid rgba(201,168,76,.3);
+      display: flex; align-items: center; justify-content: center;
+      color: rgba(255,255,255,.55);
+      text-decoration: none;
+      transition: border-color .2s, color .2s;
+    }
+    .socials a:hover { border-color: var(--gold); color: var(--gold); }
+    .socials a svg { width: 15px; height: 15px; fill: currentColor; }
+
+    .footer-bottom {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      max-width: 1100px;
+      margin: 0 auto;
+      padding-top: 28px;
+      border-top: 1px solid rgba(255,255,255,.07);
+    }
+    .footer-bottom p { font-size: 11.5px; color: rgba(255,255,255,.32); }
+    .footer-bottom-links { display: flex; gap: 24px; }
+    .footer-bottom-links a {
+      font-size: 11.5px;
+      color: rgba(255,255,255,.32);
+      text-decoration: none;
+      transition: color .2s;
+    }
+    .footer-bottom-links a:hover { color: var(--gold); }
+
+    /* ─── RESPONSIVE ──────────────────────────────── */
+    @media (max-width: 960px) {
+      nav { padding: 0 24px; }
+      .nav-links { gap: 18px; }
+      .nav-links a { font-size: 10px; letter-spacing: 1.6px; }
+      .hero { padding: 100px 32px 60px; }
+      .cards-grid { grid-template-columns: 1fr; max-width: 420px; }
+      .cta-grid { grid-template-columns: 1fr; gap: 44px; }
+      .cta-sep { width: 100%; height: 1px; }
+      .footer-top { grid-template-columns: 1fr 1fr; gap: 28px; }
+    }
+    @media (max-width: 600px) {
+      .nav-links { display: none; }
+      .hero { padding: 90px 24px 56px; }
+      .cards-section { padding: 60px 24px; }
+      .cta-section { padding: 60px 24px; }
+      footer { padding: 52px 24px 28px; }
+      .footer-top { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ═══════════════════════════════════════ NAV -->
+<nav>
+  <a href="#home" class="nav-logo">
+    <img src="https://i.ibb.co/PR3XR5s/verbum.png" alt="Verbum LLC">
+  </a>
+  <ul class="nav-links">
+    <li><a href="#home" class="active">HOME</a></li>
+    <li><a href="https://verbumapps.carrd.co/" target="_blank">APPS</a></li>
+    <li><a href="https://www.amazon.com/stores/Ashley-Sartin/author/B0GSBQMQ29?shoppingPortalEnabled=true&ccs_id=eb127738-d5b1-4a7f-88b8-759a08d0bc4f" target="_blank">PRESS</a></li>
+    <li><a href="https://open.spotify.com/artist/77BZL7PMJDkaEZNSVcBBiH?si=XNO8YqgFR-e8WDNVHejI0w" target="_blank">STUDIOS</a></li>
+    <li><a href="https://drive.google.com/drive/folders/1InUeeteyVRFQeNfCYgmdZVFeng11kdfR?usp=sharing" target="_blank">WORSHIP RESOURCES</a></li>
+    <li><a href="https://verbum-support.carrd.co/" target="_blank">SUPPORT</a></li>
+    <li><a href="mailto:verbumhq@gmail.com">CONTACT</a></li>
+  </ul>
+</nav>
+
+<!-- ═══════════════════════════════════════ HERO -->
+<section class="hero" id="home">
+  <div class="hero-inner">
+
+    <div class="hero-content">
+      <h1 class="hero-title">VERBUM LLC</h1>
+      <div class="divider">
+        <span class="line"></span><span class="dia"></span><span class="line"></span>
+      </div>
+      <p class="hero-tagline">APPS &nbsp;·&nbsp; PRESS &nbsp;·&nbsp; STUDIOS</p>
+      <p class="hero-desc">A growing hub for digital tools, publishing, and creative resources.</p>
+      <a href="#explore" class="btn btn-gold hero-cta" onclick="document.getElementById('explore').scrollIntoView({behavior:'smooth'});return false;">EXPLORE VERBUM</a>
+      <div class="hero-icons">
+        <div class="hero-icon-item">
+          <!-- Tablet/Apps icon -->
+          <svg viewBox="0 0 24 24"><rect x="4" y="1" width="16" height="22" rx="2"/><line x1="9" y1="19" x2="15" y2="19"/></svg>
+          <span>APPS</span>
+        </div>
+        <div class="hero-icon-sep"></div>
+        <div class="hero-icon-item">
+          <!-- Book/Press icon -->
+          <svg viewBox="0 0 24 24"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
+          <span>PRESS</span>
+        </div>
+        <div class="hero-icon-sep"></div>
+        <div class="hero-icon-item">
+          <!-- Music/Studios icon -->
+          <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polygon points="10,8 16,12 10,16"/></svg>
+          <span>STUDIOS</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="hero-v">
+      <img src="https://i.ibb.co/PR3XR5s/verbum.png" alt="Verbum LLC">
+    </div>
+
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════ CARDS -->
+<section class="cards-section" id="explore">
+  <div class="cards-grid">
+
+    <!-- Verbum Apps -->
+    <div class="card">
+      <img
+        src="https://i.ibb.co/nq84WBg6/apps-blue-and-gold.png"
+        alt="Verbum Apps"
+        class="card-logo"
+      >
+      <p>Powerful tools to study Scripture, grow in knowledge, and deepen your walk with God.</p>
+      <div class="card-btns">
+        <a href="https://verbumapps.carrd.co/" target="_blank" class="btn btn-navy">EXPLORE APPS</a>
+      </div>
+    </div>
+
+    <!-- Verbum Press -->
+    <div class="card">
+      <img
+        src="https://i.ibb.co/NddNSQ3Y/press-gold-and-blue.png"
+        alt="Verbum Press"
+        class="card-logo"
+      >
+      <p>Thoughtful books and resources that equip the church and nurture faith that lasts.</p>
+      <div class="card-btns">
+        <a href="https://www.amazon.com/stores/Ashley-Sartin/author/B0GSBQMQ29?shoppingPortalEnabled=true&ccs_id=eb127738-d5b1-4a7f-88b8-759a08d0bc4f" target="_blank" class="btn btn-navy">BROWSE BOOKS</a>
+      </div>
+    </div>
+
+    <!-- Verbum Studios -->
+    <div class="card">
+      <img
+        src="https://i.ibb.co/ZzJRGKHD/studios-gold-and-blue.png"
+        alt="Verbum Studios"
+        class="card-logo"
+      >
+      <p>Music and content that inspire worship, form hearts, and proclaim the truth.</p>
+      <div class="card-btns">
+        <a href="https://open.spotify.com/artist/77BZL7PMJDkaEZNSVcBBiH?si=XNO8YqgFR-e8WDNVHejI0w" target="_blank" class="btn btn-navy">LISTEN HERE</a>
+        <a href="https://drive.google.com/drive/folders/1InUeeteyVRFQeNfCYgmdZVFeng11kdfR?usp=sharing" target="_blank" class="btn btn-navy-outline">WORSHIP LEADER RESOURCES</a>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════ CTA -->
+<section class="cta-section">
+  <div class="cta-grid">
+
+    <div class="cta-item">
+      <div class="cta-icon">
+        <svg viewBox="0 0 52 52" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M10 32c0 0 5-6 16-6s16 6 16 6" stroke="#C9A84C" stroke-width="1.8" stroke-linecap="round"/>
+          <path d="M6 38c4 4 10 8 20 8s16-4 20-8" stroke="#C9A84C" stroke-width="1.8" stroke-linecap="round"/>
+          <path d="M26 24c0 0-7-5-7-11a7 7 0 0 1 14 0c0 6-7 11-7 11z" stroke="#C9A84C" stroke-width="1.8" stroke-linejoin="round"/>
+        </svg>
+      </div>
+      <div class="cta-text">
+        <h3>Support the Work</h3>
+        <p>Your generosity helps us create resources that serve the Church and advance the Gospel.</p>
+        <a href="https://verbum-support.carrd.co/" target="_blank" class="btn btn-gold">SUPPORT VERBUM</a>
+      </div>
+    </div>
+
+    <div class="cta-sep"></div>
+
+    <div class="cta-item">
+      <div class="cta-icon">
+        <svg viewBox="0 0 52 52" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <rect x="6" y="13" width="40" height="28" rx="3" stroke="#C9A84C" stroke-width="1.8"/>
+          <polyline points="6,13 26,30 46,13" stroke="#C9A84C" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </div>
+      <div class="cta-text">
+        <h3>Get in Touch</h3>
+        <p>Questions, partnerships, or general inquiries — we'd love to hear from you.</p>
+        <a href="mailto:verbumhq@gmail.com" class="btn btn-outline-dark">CONTACT US</a>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════ FOOTER -->
+<footer>
+  <div class="footer-top">
+
+    <div class="footer-brand">
+      <img src="https://i.ibb.co/PR3XR5s/verbum.png" alt="Verbum LLC">
+      <p class="footer-tagline">Built on the Word</p>
+    </div>
+
+    <div class="footer-col">
+      <h4>Company</h4>
+      <ul>
+        <li><a href="#">About Verbum</a></li>
+      </ul>
+    </div>
+
+    <div class="footer-connect">
+      <h4>Stay Connected</h4>
+      <p>Receive updates on new releases, resources, and ways to engage.</p>
+      <form class="email-row" onsubmit="return false;">
+        <input type="email" placeholder="Email address" aria-label="Email address">
+        <button type="submit" aria-label="Subscribe">
+          <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+        </button>
+      </form>
+      <div class="socials">
+        <!-- Replace # with your Facebook URL -->
+        <a href="#" title="Facebook">
+          <svg viewBox="0 0 24 24"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+        </a>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="footer-bottom">
+    <p>© 2026 VERBUM LLC. All rights reserved.</p>
+    <div class="footer-bottom-links">
+      <a href="#">Privacy Policy</a>
+      <a href="#">Terms of Use</a>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
